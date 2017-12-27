@@ -16,15 +16,21 @@ import java.util.Arrays;
  */
 public class Solution {
     public static boolean search(int[] groups, int row, int[] nums, int target) {
-        if (row < 0) return true;
+        if (row < 0) {
+            return true;
+        }
         int v = nums[row--];
         for (int i = 0; i < groups.length; i++) {
             if (groups[i] + v <= target) {
                 groups[i] += v;
-                if (search(groups, row, nums, target)) return true;
+                if (search(groups, row, nums, target)) {
+                    return true;
+                }
                 groups[i] -= v;
             }
-            if (groups[i] == 0) break;
+            if (groups[i] == 0) {
+                break;
+            }
         }
         return false;
     }
